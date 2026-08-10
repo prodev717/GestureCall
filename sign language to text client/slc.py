@@ -33,32 +33,6 @@ def comp_angles(a1, a2, marg=9.5, th=0.8):
     match = [abs(x1 - x2) <= marg for x1, x2 in zip(a1, a2)]
     ratio = sum(match) / len(match)
     return ratio >= th
-# database_path = "database"
-# img_text = {}
-
-# for folder_name in os.listdir(database_path):
-#     folder_path = os.path.join(database_path, folder_name)
-#     if os.path.isdir(folder_path):
-#         for file_name in os.listdir(folder_path):
-#             file_ext = file_name.split('.')[-1].lower()
-#             if file_ext in ['jpg', 'jpeg', 'png', 'webp']:
-#                 img_path = os.path.join(folder_path, file_name)
-#                 img_text[img_path] = folder_name.capitalize() 
-
-# buffer_sent = []
-# ref_data = {}
-# for path, text in img_text.items():
-#     img = cv2.imread(path)
-#     img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-#     res = hands.process(img_rgb)
-    
-#     if res.multi_hand_landmarks:
-#         lmks = [(lm.x, lm.y, lm.z) for lm in res.multi_hand_landmarks[0].landmark]
-#         angs = get_angles(lmks)
-#         ref_data[path] = angs
-#         print(f"angles for {text} - {angs}")
-#     else:
-#         print(f"Cannot detect angles in this image: {path}")
 
 ref_data = {}
 with open("data.pkl","rb") as f:
